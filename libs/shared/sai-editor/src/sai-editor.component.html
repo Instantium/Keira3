@@ -559,7 +559,10 @@
           Creature's Timed Actionlists
           <i class="fas fa-info-circle ms-1" placement="auto" [tooltip]="'SMARTAI.EDITOR.TIMED_ACTIONLISTS' | translate"></i>
         </p>
-        <keira-timed-actionlist [creatureId]="entryOrGuid" />
+        <keira-timed-actionlist
+          [creatureId]="entryOrGuid"
+          (select)="handlerService.selectFromEntity(SAI_TYPES.SAI_TYPE_TIMED_ACTIONLIST, $event.selected[0].entryorguid)"
+        />
       </div>
     }
   }

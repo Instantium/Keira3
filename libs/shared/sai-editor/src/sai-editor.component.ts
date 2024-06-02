@@ -175,4 +175,6 @@ export class SaiEditorComponent extends MultiRowEditorComponent<SmartScripts> im
   getHandler(): SaiHandlerService {
     return this.handlerService;
   }
+
+  protected readonly SAI_TYPES = SAI_TYPES;
 }

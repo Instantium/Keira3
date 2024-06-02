@@ -5,6 +5,8 @@
   [footerHeight]="DTCFG.footerHeight"
   [columnMode]="DTCFG.columnMode"
   [rowHeight]="DTCFG.rowHeight"
+  [selectionType]="DTCFG.selectionType"
+  (select)="onRowSelection($event)"
 >
   <ngx-datatable-column [minWidth]="100" [maxWidth]="100" name="entryorguid" prop="entryorguid"></ngx-datatable-column>
   <ngx-datatable-column [minWidth]="50" [maxWidth]="60" name="id" prop="id"></ngx-datatable-column>

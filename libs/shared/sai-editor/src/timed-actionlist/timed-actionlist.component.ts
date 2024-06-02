@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, OnChanges, Output } from '@angular/core';
 import { DTCFG } from '@keira/shared/config';
 
 import { SmartScripts } from '@keira/shared/acore-world-model';
@@ -17,6 +17,7 @@ import { MysqlQueryService } from '@keira/shared/db-layer';
 })
 export class TimedActionlistComponent implements OnChanges {
   @Input({ required: true }) creatureId!: string | number;
+  @Output() select = new EventEmitter<{ selected: SmartScripts[] }>();
 
   private readonly queryService = inject(MysqlQueryService);
 
@@ -29,5 +30,10 @@ export class TimedActionlistComponent implements OnChanges {
 
   ngOnChanges() {
     this._timedActionLists$ = this.queryService.getTimedActionlists(this.creatureId);
+  }
+
+  onRowSelection($event: any) {
+    console.log($event);
+    this.select.emit($event);
   }
 }
